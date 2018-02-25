@@ -55,13 +55,10 @@ class GameViewController: UIViewController {
         for _ in 0..<4 {
             for _ in 0..<4 {
                 let rect: CGRect = CGRect(x: 0, y: 0, width: tileWidth - 2, height: tileWidth - 2)
-                let tileLabel = UILabel(frame: rect)
+                let tileLabel = TileLabel(frame: rect)
                 let currentCenter = CGPoint(x: tileCenterX, y: tileCenterY)
                 tileLabel.center = currentCenter
-                tileLabel.backgroundColor = .red
                 tileLabel.isUserInteractionEnabled = false
-                tileLabel.textColor = .black
-                tileLabel.textAlignment = .center
                 tileLabel.text = "\(tileNumber)"
                 
                 tileCenterArray.add(currentCenter)
@@ -82,7 +79,7 @@ class GameViewController: UIViewController {
     }
     
     @IBAction func shuffleButtonTapped(_ sender: UIButton) {
-//        self.randomTiles
+//        self.randomTiles()
     }
 }
 
