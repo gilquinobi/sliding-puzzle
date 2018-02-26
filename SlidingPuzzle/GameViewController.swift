@@ -38,7 +38,7 @@ class GameViewController: UIViewController {
     
     private func setupView() {
         self.generateTiles()
-//        self.randomTiles()
+        self.shuffleTiles()
     }
     
     private func generateTiles() {
@@ -78,8 +78,19 @@ class GameViewController: UIViewController {
         tileArray.removeLastObject()
     }
     
+    private func shuffleTiles() {
+        let tempTileCenterArray: NSMutableArray = tileCenterArray.mutableCopy() as! NSMutableArray
+        for anyTile in tileArray {
+            let randomIndex: Int = Int(arc4random()) % tempTileCenterArray.count
+            let randomCenter: CGPoint = tempTileCenterArray[randomIndex] as! CGPoint
+            (anyTile as! TileLabel).center = randomCenter
+            
+            tempTileCenterArray.removeObject(at: randomIndex)
+        }
+    }
+    
     @IBAction func shuffleButtonTapped(_ sender: UIButton) {
-//        self.randomTiles()
+        self.shuffleTiles()
     }
 }
 
