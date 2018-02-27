@@ -27,20 +27,29 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="li4-h8-qgu">
-                                <rect key="frame" x="162" y="395" width="50" height="30"/>
+                                <rect key="frame" x="162" y="395" width="50" height="0.0"/>
                                 <state key="normal" title="Restart"/>
                                 <connections>
                                     <action selector="restartButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lYy-e9-td3"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="puzzle" translatesAutoresizingMaskIntoConstraints="NO" id="v4m-Ps-q0S">
+                                <rect key="frame" x="92" y="442" width="191" height="191"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="v4m-Ps-q0S" secondAttribute="height" multiplier="1:1" id="mp1-iE-KZZ"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="v4m-Ps-q0S" firstAttribute="top" secondItem="li4-h8-qgu" secondAttribute="bottom" constant="47" id="3Ex-m1-Z3H"/>
                             <constraint firstItem="li4-h8-qgu" firstAttribute="top" secondItem="Jif-0Q-n0j" secondAttribute="bottom" constant="16" id="Ct3-e9-vVx"/>
                             <constraint firstItem="Jif-0Q-n0j" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="GSA-7W-o7f"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Jif-0Q-n0j" secondAttribute="trailing" constant="16" id="dqv-9D-fuY"/>
+                            <constraint firstItem="v4m-Ps-q0S" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="lU8-Ff-eCa"/>
                             <constraint firstItem="li4-h8-qgu" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="mYY-Of-39k"/>
                             <constraint firstItem="Jif-0Q-n0j" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="tGs-pt-fZt"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="v4m-Ps-q0S" secondAttribute="bottom" constant="34" id="ujW-V2-s9i"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -52,4 +61,7 @@
             </objects>
         </scene>
     </scenes>
+    <resources>
+        <image name="puzzle" width="954" height="954"/>
+    </resources>
 </document>

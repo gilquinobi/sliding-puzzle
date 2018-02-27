@@ -60,7 +60,13 @@ class GameViewController: UIViewController {
                 let currentCenter = CGPoint(x: tileCenterX, y: tileCenterY)
                 tileLabel.center = currentCenter
                 tileLabel.originCenter = currentCenter
-                tileLabel.text = "\(tileNumber)"
+//                tileLabel.text = "\(tileNumber)"
+                
+                if tileNumber <= 16 {
+                    tileLabel.backgroundColor = UIColor(patternImage: UIImage(named: "\(tileNumber)")!)
+                } else {
+                    tileLabel.backgroundColor = .gray
+                }
                 
                 tileCenterArray.add(currentCenter)
                 
@@ -104,7 +110,10 @@ class GameViewController: UIViewController {
             let delta: CGFloat = sqrt(pow(xDiff, 2) + pow(yDiff, 2))
             if delta == tileWidth {
                 let tempCenter = tileLabel.center
+                UIView.beginAnimations(nil, context: nil)
+                UIView.setAnimationDuration(0.2)
                 tileLabel.center = tileEmptyCenter
+                UIView.commitAnimations()
                 tileEmptyCenter = tempCenter
             }
         }
