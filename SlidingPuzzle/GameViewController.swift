@@ -3,13 +3,14 @@ import UIKit
 
 class GameViewController: UIViewController {
     @IBOutlet weak var boardView: UIView!
-    var tileWidth: Int = 0
-    var tileCenterX: Int = 0
-    var tileCenterY: Int = 0
+    var tileWidth: CGFloat = 0
+    var tileCenterX: CGFloat = 0
+    var tileCenterY: CGFloat = 0
+    let tilesPerLine = 4
     
     var tileArray: NSMutableArray = []
     var tileCenterArray: NSMutableArray = []
-    var tileEmpty: CGPoint = .zero
+    var tileEmptyCenter: CGPoint = .zero
     
     // MARK: - Initialization
     required init?(coder aDecoder: NSCoder) {
@@ -45,20 +46,20 @@ class GameViewController: UIViewController {
         tileArray.removeAllObjects()
         tileCenterArray.removeAllObjects()
         
-        let boardWidth = Int(self.boardView.bounds.width)
-        tileWidth = boardWidth / 4
+        let boardWidth = self.boardView.bounds.width
+        tileWidth = boardWidth / CGFloat(tilesPerLine)
         tileCenterX = tileWidth / 2
         tileCenterY = tileWidth / 2
         
         var tileNumber: Int = 1
         
-        for _ in 0..<4 {
-            for _ in 0..<4 {
+        for _ in 0..<tilesPerLine {
+            for _ in 0..<tilesPerLine {
                 let rect: CGRect = CGRect(x: 0, y: 0, width: tileWidth - 2, height: tileWidth - 2)
                 let tileLabel = TileLabel(frame: rect)
                 let currentCenter = CGPoint(x: tileCenterX, y: tileCenterY)
                 tileLabel.center = currentCenter
-                tileLabel.isUserInteractionEnabled = false
+                tileLabel.originCenter = currentCenter
                 tileLabel.text = "\(tileNumber)"
                 
                 tileCenterArray.add(currentCenter)
@@ -87,10 +88,25 @@ class GameViewController: UIViewController {
             
             tempTileCenterArray.removeObject(at: randomIndex)
         }
+        tileEmptyCenter = tempTileCenterArray.firstObject as! CGPoint
     }
     
-    @IBAction func shuffleButtonTapped(_ sender: UIButton) {
+    @IBAction func restartButtonTapped(_ sender: UIButton) {
         self.shuffleTiles()
     }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let currentTouch: UITouch = touches.first!
+        if tileArray.contains(currentTouch.view as Any) {
+            let tileLabel = currentTouch.view as! TileLabel
+            let xDiff = tileLabel.center.x - tileEmptyCenter.x
+            let yDiff = tileLabel.center.y - tileEmptyCenter.y
+            let delta: CGFloat = sqrt(pow(xDiff, 2) + pow(yDiff, 2))
+            if delta == tileWidth {
+                let tempCenter = tileLabel.center
+                tileLabel.center = tileEmptyCenter
+                tileEmptyCenter = tempCenter
+            }
+        }
+    }
 }
-

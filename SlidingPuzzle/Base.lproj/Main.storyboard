@@ -27,10 +27,10 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="li4-h8-qgu">
-                                <rect key="frame" x="164" y="395" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
+                                <rect key="frame" x="162" y="395" width="50" height="30"/>
+                                <state key="normal" title="Restart"/>
                                 <connections>
-                                    <action selector="shuffleButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lYy-e9-td3"/>
+                                    <action selector="restartButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lYy-e9-td3"/>
                                 </connections>
                             </button>
                         </subviews>

@@ -2,6 +2,7 @@
 import UIKit
 
 class TileLabel: UILabel {
+    var originCenter: CGPoint = .zero
     
     // MARK: - Initialization
     required init?(coder aDecoder: NSCoder) {
@@ -22,6 +23,7 @@ class TileLabel: UILabel {
     // MARK: - View Methods
     private func setupView() {
         self.backgroundColor = .red
+        self.isUserInteractionEnabled = true
         self.textColor = .black
         self.textAlignment = .center
     }
