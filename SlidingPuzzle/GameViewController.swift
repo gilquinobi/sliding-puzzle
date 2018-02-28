@@ -7,7 +7,7 @@ class GameViewController: UIViewController {
     var tileCenterX: CGFloat = 0
     var tileCenterY: CGFloat = 0
     let tilesPerLine = 4
-    
+    let test = "test";
     var tileArray: NSMutableArray = []
     var tileCenterArray: NSMutableArray = []
     var tileEmptyCenter: CGPoint = .zero
